@@ -9,14 +9,35 @@ import data from "./data/ghibli/ghibli.js";
 //   return "OMG";
 // };
 
+//const dataFilms = data.films;
 export const films = {
-  alphabeticOrderFilter: function alphabeticOrderFilter() {
+
+
+  alphabeticOrderFilter: function alphabeticOrderFilter(dataFilms) {
     //Variável para encontrar os films em data
-    const films = data.films;
+    
     //Variável que retorna os títulos dos filmes como array
-    const teste = films.map(
-      (animation) => animation.title);
-    //Variável para colocar em ordem os títulos
-    const sorted = teste.sort();
-    return alert(((sorted).join(" ")));
-  }};
+  //   const teste = dataFilms.map(
+  //     (animation) => animation.title);
+  //   //Variável para colocar em ordem os títulos
+  //   const sorted = teste.sort();
+  // //  return alert(((sorted).join(" ")));
+  //   console.log(sorted);
+  
+    
+    return dataFilms.sort(function(a, b) {
+      if (a.title < b.title) return -1;
+      if (a.title > b.title) return 1;
+      return 0;
+
+      
+    });
+    
+  },
+  
+
+  inverseAlphabeticOrderFilter: function inverseAlphabeticOrderFilter() {
+
+
+  } 
+};
