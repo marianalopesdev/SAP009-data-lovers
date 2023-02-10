@@ -18,7 +18,7 @@
   }
   
   body {
-    font-family: "Eyad Al-Samman - Ghibli", Arial, Helvetica, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
     
   }
   
@@ -36,6 +36,7 @@
     display: flex;
     height: 20vh;
     color: #1c6773;
+    font-family: "Eyad Al-Samman - Ghibli", Arial, Helvetica, sans-serif;
     text-align: center;
     padding-top: 2rem;
     padding-bottom: 2rem;
