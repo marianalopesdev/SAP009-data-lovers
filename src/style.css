@@ -18,7 +18,7 @@ body {
 }
 
 body {
-  font-family: "Eyad Al-Samman - Ghibli", Arial, Helvetica, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
   
 }
 
@@ -36,6 +36,7 @@ header {
   display: flex;
   height: 15vh;
   color: #1c6773;
+  font-family: "Eyad Al-Samman - Ghibli", Arial, Helvetica, sans-serif;
   text-align: center;
   padding-top: 2rem;
   padding-bottom: 2rem;
@@ -69,6 +70,16 @@ main {
   display: flex;
   flex-direction: column;
   overflow: auto;
+  font-size: 1.6rem;
+ 
+}
+
+.top-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+ 
+ padding: 2rem 6rem;
 }
 
 .animation-cards {
@@ -109,10 +120,8 @@ main {
 
 }
 
-#list-container {
-  font-size: 1.6rem;
-  padding-top: 2rem;
-  padding-left: 5rem;
+.list-container {
+  
 }
 
 footer {

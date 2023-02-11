@@ -2,12 +2,11 @@ import data from "./data/ghibli/ghibli.js";
 import { films } from "./data.js";
 
 const allAnimations = data.films;
-
-const an = document.querySelector(".animation-cards");
-document.querySelector(".animation-cards").innerHTML =
-  showAnimations(allAnimations);
+const animationCards = document.querySelector(".animation-cards");
 const filterButton = document.getElementById("filter-button");
-filterButton.addEventListener("click", t2);
+const filterType = document.getElementById("filter-type");
+document.querySelector(".animation-cards").innerHTML = showAnimations(allAnimations);
+filterButton.addEventListener("click", defineAlphabeticalFilter);
 
 function showAnimations(allAnimations) {
   return allAnimations
@@ -24,66 +23,45 @@ function showAnimations(allAnimations) {
     .join("");
 }
 
-// 
-
-function t2() {
-  let teste = null;
+function defineAlphabeticalFilter() {
+  let alphabeticalFilter = null;
   if (filterButton.value === "Show films from A - Z") {
-    teste = films.alphabeticOrderFilter(allAnimations);
+    alphabeticalFilter = films.alphabeticOrderFilter(allAnimations);
     filterButton.value = "Show films from Z - A";
-  } else if (filterButton.value === "Show films from Z - A") {
-    teste = films.inverseAlphabeticOrderFilter(allAnimations);
-    filterButton.value = "Show films from A - Z";
-  }
+   filterType.innerHTML = "A - Z";
 
-  an.innerHTML = teste
+  } else if (filterButton.value === "Show films from Z - A") {
+    alphabeticalFilter = films.inverseAlphabeticOrderFilter(allAnimations);
+    filterButton.value = "Show films from A - Z";
+    filterType.innerHTML = "Z - A";
+  }
+  showFilmsAlphabeticalOrder(alphabeticalFilter);
+}
+
+function showFilmsAlphabeticalOrder (alphabeticalFilter){  
+  animationCards.innerHTML = alphabeticalFilter
     .map(
       (animation) =>
         `
 <div class="cards">
-<img class="posters" src="${animation.poster}" alt="Pôster do filme">
+<img class="posters" src="${animation.poster}" alt="Pôster de ${animation.title}">
 <p class="film-info">${animation.title} </p>
 <p class="film-info"> ${animation.release_date}</p>
 </div>
 `
     )
-    .join("");
-  
-  //
-  //  list.appendChild(newDiv2);
+    .join("");  
 }
 
-//CREATE ELEMENT E APPENDCHILD DE EXEMPLO
-const list = document.getElementById("list-container");
 function createElement(data) {
-  // Cria um novo elemento div
+
+  const parentDiv = document.querySelector(".top-info");
+  const childDiv = document.getElementById("buttons");
   const newDiv = document.createElement("div");
-  // Adiciona conteúdo ao novo elemento div
+  newDiv.classList.add("list-container");  
   newDiv.innerHTML =
     "Total number of animations produced by Studio Ghibli: " + data.length;
-  // Adiciona o novo elemento div ao documento HTML
-  list.appendChild(newDiv);
+  parentDiv.insertBefore(newDiv, childDiv);
 }
 
 createElement(allAnimations);
-
-//function showAlphabeticalOrder() {
-  //   //alert("showAlphabeticalOrder");
-  //   const teste = films.alphabeticOrderFilter(allAnimations);
-  
-  //   an.innerHTML = teste
-  //     .map(
-  //       (animation) =>
-  //         `
-  //   <div class="cards">
-  //   <img class="posters" src="${animation.poster}" alt="Pôster do filme">
-  //   <p class="film-info">${animation.title} </p>
-  //   <p class="film-info"> ${animation.release_date}</p>
-  //   </div>
-  //   `
-  //     )
-  //     .join("");
-  //   filterButton.value = "Show films from Z - A";
-  //   //
-  //   //  list.appendChild(newDiv2);
-  // }
