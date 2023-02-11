@@ -71,7 +71,7 @@ main {
   overflow: auto;
 }
 
-.animation_cards {
+.animation-cards {
   display: flex;  
   flex-direction: row;
   flex-wrap: wrap;

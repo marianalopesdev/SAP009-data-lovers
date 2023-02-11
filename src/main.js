@@ -3,9 +3,10 @@ import { films } from "./data.js";
 
 const allAnimations = data.films;
 
-document.querySelector(".animation_cards").innerHTML = showAnimations(allAnimations);
+const an = document.querySelector(".animation-cards");
+document.querySelector(".animation-cards").innerHTML = showAnimations(allAnimations);
 const filterButton = document.getElementById("filter-button");
-filterButton.addEventListener("click", teste1);
+filterButton.addEventListener("click", showAlphabeticalOrder);
 
 function showAnimations(allAnimations) {
   return allAnimations
@@ -22,12 +23,12 @@ function showAnimations(allAnimations) {
     .join("");
 }
 
-function teste1() {
-  //alert("teste1");
+function showAlphabeticalOrder() {
+  //alert("showAlphabeticalOrder");
   const teste = films.alphabeticOrderFilter(allAnimations);
-  const newDiv2 = document.createElement("div");
+ 
 
-  newDiv2.innerHTML = teste
+  an.innerHTML = teste
     .map(
       (animation) =>
         `
@@ -39,7 +40,8 @@ function teste1() {
   `
     )
     .join("");
-    
+  filterButton.value = "Show films from Z - A";
+  //
   list.appendChild(newDiv2);
   
  
