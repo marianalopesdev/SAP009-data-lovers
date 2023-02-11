@@ -1,5 +1,5 @@
 import data from "./data/ghibli/ghibli.js";
-import { films } from "./data.js";
+import { searchFilm } from "./data.js";
 
 const allAnimations = data.films;
 const animationCards = document.querySelector(".animation-cards");
@@ -10,18 +10,21 @@ filterButton.addEventListener("click", defineAlphabeticalFilter);
 
 function showAnimations(allAnimations) {
   return allAnimations
-    .map(
-      (animation) =>
-        `
+
+      .map((animation) =>
+      `<div class="all-cards">
+
   <div class="cards">
   <img class="posters" src="${animation.poster}" alt="Pôster do filme">
-  <p class="film-info">${animation.title} </p>
+  <p id="film-title" class="film-info">${animation.title} </p>
   <p class="film-info"> ${animation.release_date}</p>
+  </div>
   </div>
   `
     )
     .join("");
 }
+
 
 function defineAlphabeticalFilter() {
   let alphabeticalFilter = null;
@@ -53,7 +56,13 @@ function showFilmsAlphabeticalOrder (alphabeticalFilter){
     .join("");  
 }
 
+
+const inputArea = document.getElementById("filter");
+inputArea.addEventListener("keyup", searchFilm);
+
+
 function createElement(data) {
+
 
   const parentDiv = document.querySelector(".top-info");
   const childDiv = document.getElementById("buttons");
@@ -62,6 +71,8 @@ function createElement(data) {
   newDiv.innerHTML =
     "Total number of animations produced by Studio Ghibli: " + data.length;
   parentDiv.insertBefore(newDiv, childDiv);
+
+
 }
 
 createElement(allAnimations);
