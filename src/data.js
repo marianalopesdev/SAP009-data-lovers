@@ -36,8 +36,12 @@ export const films = {
   },
   
 
-  inverseAlphabeticOrderFilter: function inverseAlphabeticOrderFilter() {
+  inverseAlphabeticOrderFilter: function inverseAlphabeticOrderFilter(dataFilms) {
 
-alert('inverse');
+//alert('inverse');
+return dataFilms.sort((a, b) => b.title.localeCompare(a.title));
+
+      
+    
   } 
 };

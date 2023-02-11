@@ -4,9 +4,10 @@ import { films } from "./data.js";
 const allAnimations = data.films;
 
 const an = document.querySelector(".animation-cards");
-document.querySelector(".animation-cards").innerHTML = showAnimations(allAnimations);
+document.querySelector(".animation-cards").innerHTML =
+  showAnimations(allAnimations);
 const filterButton = document.getElementById("filter-button");
-filterButton.addEventListener("click", showAlphabeticalOrder);
+filterButton.addEventListener("click", t2);
 
 function showAnimations(allAnimations) {
   return allAnimations
@@ -23,31 +24,34 @@ function showAnimations(allAnimations) {
     .join("");
 }
 
-function showAlphabeticalOrder() {
-  //alert("showAlphabeticalOrder");
-  const teste = films.alphabeticOrderFilter(allAnimations);
- 
+// 
+
+function t2() {
+  let teste = null;
+  if (filterButton.value === "Show films from A - Z") {
+    teste = films.alphabeticOrderFilter(allAnimations);
+    filterButton.value = "Show films from Z - A";
+  } else if (filterButton.value === "Show films from Z - A") {
+    teste = films.inverseAlphabeticOrderFilter(allAnimations);
+    filterButton.value = "Show films from A - Z";
+  }
 
   an.innerHTML = teste
     .map(
       (animation) =>
         `
-  <div class="cards">
-  <img class="posters" src="${animation.poster}" alt="Pôster do filme">
-  <p class="film-info">${animation.title} </p>
-  <p class="film-info"> ${animation.release_date}</p>
-  </div>
-  `
+<div class="cards">
+<img class="posters" src="${animation.poster}" alt="Pôster do filme">
+<p class="film-info">${animation.title} </p>
+<p class="film-info"> ${animation.release_date}</p>
+</div>
+`
     )
     .join("");
-  filterButton.value = "Show films from Z - A";
-  //
-  list.appendChild(newDiv2);
   
- 
+  //
+  //  list.appendChild(newDiv2);
 }
-
-
 
 //CREATE ELEMENT E APPENDCHILD DE EXEMPLO
 const list = document.getElementById("list-container");
@@ -62,3 +66,24 @@ function createElement(data) {
 }
 
 createElement(allAnimations);
+
+//function showAlphabeticalOrder() {
+  //   //alert("showAlphabeticalOrder");
+  //   const teste = films.alphabeticOrderFilter(allAnimations);
+  
+  //   an.innerHTML = teste
+  //     .map(
+  //       (animation) =>
+  //         `
+  //   <div class="cards">
+  //   <img class="posters" src="${animation.poster}" alt="Pôster do filme">
+  //   <p class="film-info">${animation.title} </p>
+  //   <p class="film-info"> ${animation.release_date}</p>
+  //   </div>
+  //   `
+  //     )
+  //     .join("");
+  //   filterButton.value = "Show films from Z - A";
+  //   //
+  //   //  list.appendChild(newDiv2);
+  // }
