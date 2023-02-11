@@ -1,5 +1,5 @@
 import data from "./data/ghibli/ghibli.js";
-import { searchFilm } from "./data.js";
+import { films } from "./data.js";
 
 const allAnimations = data.films;
 const animationCards = document.querySelector(".animation-cards");
@@ -58,7 +58,7 @@ function showFilmsAlphabeticalOrder (alphabeticalFilter){
 
 
 const inputArea = document.getElementById("filter");
-inputArea.addEventListener("keyup", searchFilm);
+inputArea.addEventListener("keyup", films.searchFilm);
 
 
 function createElement(data) {
