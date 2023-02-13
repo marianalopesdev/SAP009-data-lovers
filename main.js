@@ -3,6 +3,7 @@ import { films } from "./data.js";
 
 const allAnimations = data.films;
 const animationCards = document.querySelector(".animation-cards");
+
 const filterButton = document.getElementById("filter-button");
 const filterType = document.getElementById("label-filter-type");
 
@@ -19,17 +20,17 @@ function showAnimations(allAnimations) {
     .map(
       (animation) =>
         `
-          <div class="cards">
-          <img class="posters" src="${animation.poster}" alt="Pôster de ${animation.title}>
-          <p id="film-title" class="film-info">${animation.title} </p>
-          <p class="film-info"> ${animation.release_date}</p>
-          </div>          
-  `
+      <div class="cards">
+      <img class="posters" src="${animation.poster}" alt="Pôster de ${animation.title}">
+      <p id="film-title" class="film-info">${animation.title} </p>
+      <p class="film-info"> ${animation.release_date}</p>
+      </div>
+      `
     )
     .join("");
 }
 
-//essa função pode ser mudada para receber diferentes filtros e passar pra 
+//essa função pode ser mudada para receber diferentes filtros e passar pra
 //proxima funcao de exibição
 
 function defineAlphabeticalFilter(event) {
@@ -38,6 +39,8 @@ function defineAlphabeticalFilter(event) {
   if (filterButton.value === "Show films from A - Z") {
     alphabeticalFilter = films.alphabeticOrderFilter(allAnimations);
     filterButton.value = "Show films from Z - A";
+
+    filterType.innerHTML = "A - Z";
     filterType.innerHTML = "Animations from A - Z";
   } else if (filterButton.value === "Show films from Z - A") {
     alphabeticalFilter = films.inverseAlphabeticOrderFilter(allAnimations);
