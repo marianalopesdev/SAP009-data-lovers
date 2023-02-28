@@ -145,14 +145,14 @@ main {
   display: flex;  
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content:space-between;
   padding-top: 2rem; 
   padding-left: 3rem;
   padding-right: 3rem;
   font-size: 1.6rem;
 }
 
-.cards {
+.cards, .char-cards{
   display: flex;
   flex-direction: column;
   background-color: #c8e1e4;
@@ -253,6 +253,7 @@ footer {
   height: 2.5rem;
   padding: 0.6rem 1.5rem;
   margin: 0.2rem;
+  opacity: 0;
 }
 
 .more-info-bts:active, #close:active {
@@ -265,6 +266,11 @@ footer {
   padding: 0.5rem;
 }
 
+.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
 #close {
   position: absolute;
   bottom: 1rem;
@@ -274,6 +280,32 @@ footer {
   padding: 0.6rem;
   border-radius: 0.5rem;
   border: none;
+}
+
+.char-cards:hover .card-front {
+  transform: rotateY(180deg);
+}
+
+.char-cards:hover .card-back {
+  transform: none;
+}
+
+.char-cards {
+  transition: transform 0.8s;
+  position: relative;
+}
+
+.card-front, .card-back {
+  position: absolute;
+  backface-visibility: hidden;
+}
+
+.card-back {
+  transform: rotateY(180deg);
+}
+
+.card-front {
+  transform: none;
 }
 
 .modal-wrapper.show {
